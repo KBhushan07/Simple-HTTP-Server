@@ -164,7 +164,7 @@ class HTTPServer(TCPServer):
         # Retrieve the request data from the request body
         request_data = request.body
 
-        # Perform your PUT operation here, for example, saving the data to a file
+
         with open(path, 'wb') as f:
             f.write(request_data)
 
@@ -184,7 +184,6 @@ class HTTPServer(TCPServer):
         path = request.uri.strip('/')
 
         if os.path.exists(path) and not os.path.isdir(path):
-            # Perform your DELETE operation here, for example, deleting a file
             os.remove(path)
 
             response_line = self.response_line(200)
@@ -207,8 +206,6 @@ class HTTPServer(TCPServer):
         path = request.uri.strip('/')
 
         if not path:
-            # If path is empty, that means user is at the homepage
-            # so just serve index.html
             path = 'index.html'
 
         if os.path.exists(path) and not os.path.isdir(path):
